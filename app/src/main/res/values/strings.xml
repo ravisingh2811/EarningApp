@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Real cash</string>
+
+
+    <string name="admob_app_id">ca-app-pub-5196132983813754~5600372895</string>
+    <string name="admob_banner_id">ca-app-pub-3940256099942544/2934735716</string>
+    <string name="admob_interstital_id">ca-app-pub-3940256099942544/4411468910</string>
+    <string name="admob_rewarded_id">ca-app-pub-3940256099942544/1712485313</string>
+    <string name="spin_and_earn">Spin And Earn</string>
+    <string name="todo">TODO</string>
+
+</resources>

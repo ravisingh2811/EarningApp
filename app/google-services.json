@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "569211097922",
+    "project_id": "real-cash-3bf30",
+    "storage_bucket": "real-cash-3bf30.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569211097922:android:9cfa5a97b61941ae4d6edb",
+        "android_client_info": {
+          "package_name": "com.example.realcash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569211097922-aea59rmso12ia8h58g00eg4ek11c4hdb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.realcash",
+            "certificate_hash": "585a8f1fa405e70b5fab91c5e583aa0a80d23893"
+          }
+        },
+        {
+          "client_id": "569211097922-n8k83u94elb47lb42tfgi1ofnere4frb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv-MYH4L6ESYeOtt4gwEIUcI85gdx6e1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569211097922-n8k83u94elb47lb42tfgi1ofnere4frb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

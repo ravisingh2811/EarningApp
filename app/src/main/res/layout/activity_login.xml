@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgs"
+    android:background="@drawable/img2"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
@@ -36,7 +36,7 @@
             android:id="@+id/etPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
@@ -50,7 +50,7 @@
             android:gravity="right"
             android:padding="5dp"
             android:text="Create an account"
-            android:textColor="#07FA3B"
+            android:textColor="#072FFA"
             tools:text="Create an account" />
 
         <Button
@@ -60,6 +60,8 @@
             android:layout_marginTop="10dp"
             android:padding="15dp"
             android:text="SIGN IN"
+            android:textColor="#FFFDFD"
+            app:backgroundTint="#8BC34A"
             app:cornerRadius="5dp"
             tools:text="SIGN IN" />
 

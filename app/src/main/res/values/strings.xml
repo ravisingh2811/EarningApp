@@ -9,4 +9,11 @@
     <string name="spin_and_earn">Spin And Earn</string>
     <string name="todo">TODO</string>
 
+    <array name="method">
+        <item>Phonepe</item>
+        <item>Google Pay</item>
+        <item>Paytm</item>
+    </array>
+
+
 </resources>

@@ -18,25 +18,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_alignParentTop="true"
         android:background="?attr/colorPrimary"
-        >
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Withdraw"
-                android:layout_centerInParent="true"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"/>
-
-
-
-        </RelativeLayout>
-
-    </androidx.appcompat.widget.Toolbar>
+        />
 
     <TextView
         android:id="@+id/coinsTv"
@@ -67,6 +49,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical">
+
 
         <EditText
             android:id="@+id/method"
@@ -104,11 +87,11 @@
         <Button
             android:id="@+id/submit"
             android:layout_width="140dp"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:layout_marginTop="30dp"
             android:text="Submit"
             android:textColor="@color/white"
-            android:textSize="14sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 

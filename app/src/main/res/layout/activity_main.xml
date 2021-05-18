@@ -30,18 +30,19 @@
                 android:id="@+id/coinsTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/adView"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentBottom="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="13dp"
                 android:layout_marginRight="13dp"
-                android:layout_marginBottom="203dp"
+                android:layout_marginBottom="88dp"
+                android:background="@drawable/button"
                 android:drawableEnd="@drawable/ic_coin"
                 android:drawableRight="@drawable/ic_coin"
-                android:drawablePadding="12dp"
                 android:gravity="center_vertical"
+                android:padding="10dp"
                 android:text="5000"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -60,18 +61,18 @@
 
             <TextView
                 android:id="@+id/userprofile"
-                android:layout_width="77dp"
-                android:layout_height="30dp"
+                android:layout_width="87dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/adView"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="82dp"
-                android:layout_marginLeft="82dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginLeft="18dp"
                 android:layout_marginTop="21dp"
-                android:layout_marginEnd="51dp"
-                android:layout_marginRight="51dp"
-                android:layout_toStartOf="@+id/coinsTv"
-                android:layout_toLeftOf="@+id/coinsTv"
+                android:layout_marginBottom="89dp"
                 android:layout_toEndOf="@+id/profile_Image"
                 android:layout_toRightOf="@+id/profile_Image"
+                android:background="@drawable/button"
+                android:padding="10dp"
                 android:text="Profile"
                 android:textColor="@color/white"
                 android:textSize="18sp"
@@ -239,7 +240,7 @@
                         android:layout_width="42dp"
                         android:layout_height="42dp"
                         android:layout_centerInParent="true"
-                        android:src="@drawable/ic_tick" />
+                        android:src="@drawable/dice1" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -247,7 +248,7 @@
                         android:layout_alignParentBottom="true"
                         android:layout_centerHorizontal="true"
                         android:padding="10dp"
-                        android:text="Task and Survey"
+                        android:text="Roll Dice"
                         android:textColor="@color/black"
                         android:textStyle="bold" />
 
@@ -411,14 +412,14 @@
         android:id="@+id/adView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        ads:layout_constraintBottom_toBottomOf="parent"
-        ads:layout_constraintEnd_toEndOf="parent"
         ads:adSize="BANNER"
         ads:adUnitId="@string/admob_banner_id"
+        ads:layout_constraintBottom_toBottomOf="parent"
+        ads:layout_constraintEnd_toEndOf="parent"
         ads:layout_constraintHorizontal_bias="0.493"
         ads:layout_constraintStart_toStartOf="parent"
         ads:layout_constraintTop_toBottomOf="@+id/banner_ad"
-        ads:layout_constraintVertical_bias="0.312" />
+        ads:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

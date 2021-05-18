@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/imgs"
+    android:background="@drawable/img2"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SignupActivity">
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Username"
             android:inputType="textPersonName"
@@ -38,17 +38,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="10dp" />
+
         <EditText
             android:id="@+id/etnumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Phone Pay Number"
             android:inputType="number"
@@ -58,7 +59,7 @@
             android:id="@+id/etPasswordLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="@drawable/bg_login"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
@@ -72,7 +73,7 @@
             android:gravity="right"
             android:padding="5dp"
             android:text="Already have account"
-            android:textColor="#07FA3B"
+            android:textColor="#072FFA"
             tools:text="Already have account" />
 
         <Button
@@ -82,6 +83,8 @@
             android:layout_marginTop="10dp"
             android:padding="15dp"
             android:text="SIGN UP"
+            android:textColor="#FDFCFC"
+            app:backgroundTint="#1DD12F"
             app:cornerRadius="5dp"
             tools:text="SIGN UP" />
 

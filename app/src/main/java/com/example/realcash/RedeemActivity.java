@@ -64,39 +64,87 @@ public class RedeemActivity extends AppCompatActivity {
                 String n = number.getText().toString();
                 String  c = coins.getText().toString();
 
-                if(m.isEmpty() || n.isEmpty() || c.isEmpty()){
-                    Toast.makeText(RedeemActivity.this, "This Field Cannot be Empty", Toast.LENGTH_SHORT).show();
+                if(m.isEmpty()){
+                    method.setError("Required");
+                    return;}
+                else if (n.isEmpty()){
+                    number.setError("Required");
+                   return;
+                }else if (c.isEmpty()){
+                    coins.setError("Required");
+                    return;
                 }else {
 
-                    reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            int currentCoins= Integer.parseInt(coinsTv.getText().toString());
-                            String edit_coins = coins.getText().toString();
+                    int currentCoins= Integer.parseInt(coinsTv.getText().toString());
 
 
-                            if(Integer.parseInt(edit_coins) >= 5000 ){
-                                if(currentCoins >=  Integer.parseInt(edit_coins)){
+                            if(Integer.parseInt(c) >= 5000 && currentCoins >=  Integer.parseInt(c) ){
+
+                                    reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                            int updateCoins = currentCoins - Integer.parseInt(c);
+                                            String date = DateFormat.getDateInstance().format(new Date());
+                                            String time = DateFormat.getTimeInstance().format(new Date());
+
+                                            HashMap <String , Object> map = new HashMap<>();
+                                            map.put("coins" , updateCoins);
+                                            map.put("method" , method.getText().toString());
+                                            map.put("number" , number.getText().toString());
+                                            map.put("withdrawCoins" , c );
+                                            map.put("date" , date);
+                                            map.put("time" , time);
 
 
-                                request(currentCoins , edit_coins);
-                                }else{
-                                    Toast.makeText(RedeemActivity.this, "Not enough coins to redeem ", Toast.LENGTH_SHORT).show();
+                                            HashMap<String , Object> map2 = new HashMap<>();
+                                            map2.put("coins" , updateCoins);
 
-                                }
+                                            reference.child(user.getUid()).updateChildren(map2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(RedeemActivity.this, "Request Has been send Please Wait", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(RedeemActivity.this , MainActivity.class));
+                                                        finish();
+                                                    }else
+                                                    {
+                                                        Toast.makeText(RedeemActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                                    }
+
+                                                }
+                                            });
+
+
+                                            reference.child("Payments").child(user.getUid()).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if(task.isSuccessful()){
+                                                        Toast.makeText(RedeemActivity.this, "Request Has been send Please Wait", Toast.LENGTH_SHORT).show();
+                                                        startActivity(new Intent(RedeemActivity.this , MainActivity.class));
+                                                        finish();
+                                                    }else
+                                                    {
+                                                        Toast.makeText(RedeemActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                                                    }
+
+                                                }
+                                            });
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError error) {
+                                            Toast.makeText(RedeemActivity.this, "Database Error", Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+
                             }else
                             {
                                 Toast.makeText(RedeemActivity.this, "Please Enter value greater than or equal to  5000", Toast.LENGTH_SHORT).show();
                             }
 
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError error) {
-
-                        }
-                    });
                 }
             }
         });
@@ -111,6 +159,7 @@ public class RedeemActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        toolbar.setTitle("Withdraw");
 
 
     }
@@ -123,13 +172,7 @@ public class RedeemActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         ProfileModel model = dataSnapshot.getValue(ProfileModel.class);
-
-
                         coinsTv.setText(String.valueOf(model.getCoins()));
-
-
-
-
                     }
 
                     @Override
@@ -142,46 +185,64 @@ public class RedeemActivity extends AppCompatActivity {
 
     }
 
-    private void request(int currentCoins , String edit_coins){
-        reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                int updateCoins = currentCoins - Integer.parseInt(edit_coins);
-                String date = DateFormat.getDateInstance().format(new Date());
-                String time = DateFormat.getTimeInstance().format(new Date());
 
-                HashMap <String , Object> map = new HashMap<>();
-                map.put("coins" , updateCoins);
-                map.put("method" , method.getText().toString());
-                map.put("number" , number.getText().toString());
-                map.put("withdrawCoins" , edit_coins );
-                map.put("date" , date);
-                map.put("time" , time);
-
-                reference.child(user.getUid()).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if(task.isSuccessful()){
-                            Toast.makeText(RedeemActivity.this, "Request Has been send Please Wait", Toast.LENGTH_SHORT).show();
-                        }else
-                        {
-                            Toast.makeText(RedeemActivity.this, "Error", Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(RedeemActivity.this, "Database Error", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-
-
-    }
+//   private void request(int currentCoins){
+//      reference.child(user.getUid()).addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                String edit_coins = coins.getText().toString();
+//                int updateCoins = currentCoins - Integer.parseInt(edit_coins);
+//                String date = DateFormat.getDateInstance().format(new Date());
+//                String time = DateFormat.getTimeInstance().format(new Date());
+//
+//                HashMap <String , Object> map = new HashMap<>();
+//                map.put("coins" , updateCoins);
+//                map.put("method" , method.getText().toString());
+//                map.put("number" , number.getText().toString());
+//                map.put("withdrawCoins" , edit_coins );
+//                map.put("date" , date);
+//                map.put("time" , time);
+//
+//                HashMap <String , Object> map2 = new HashMap<>();
+//                map2.put("coins" , updateCoins);
+//
+//                reference.child(user.getUid()).updateChildren(map2).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(RedeemActivity.this, "Request Has been send Please Wait", Toast.LENGTH_SHORT).show();
+//                        }else
+//                        {
+//                            Toast.makeText(RedeemActivity.this, "Error", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
+//
+//                reference.child("Payments").child(user.getUid()).updateChildren(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<Void> task) {
+//                        if(task.isSuccessful()){
+//                            Toast.makeText(RedeemActivity.this, "Request Has been send Please Wait", Toast.LENGTH_SHORT).show();
+//                        }else
+//                        {
+//                            Toast.makeText(RedeemActivity.this, "Error", Toast.LENGTH_SHORT).show();
+//                        }
+//
+//                    }
+//                });
+//
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//                Toast.makeText(RedeemActivity.this, "Database Error", Toast.LENGTH_SHORT).show();
+//
+//            }
+//        });
+//
+//
+//
+//
+//    }
 }

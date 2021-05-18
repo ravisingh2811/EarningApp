@@ -9,14 +9,16 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
+        android:layout_width="266dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="365dp"
+        android:layout_marginBottom="101dp"
         android:fontFamily="sans-serif-black"
+        android:gravity="center"
         android:text="Real Cash"
         android:textColor="#1041F1"
         android:textSize="36sp"
         android:textStyle="bold" />
+
 </RelativeLayout>
